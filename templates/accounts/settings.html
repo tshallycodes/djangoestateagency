@@ -1,0 +1,63 @@
+{% extends 'basetwo.html' %}
+{% block content %}
+
+<main id="main">
+    <section class="container" style="margin-top: 10%;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Edit Account</h3>
+                <p>fill the form below to update account.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{{ request.user.photo.url }}" width="150" height="150" alt="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{% url 'settings' %}" method="POST" enctype="multipart/form-data">
+                    {% include 'partials/_alerts.html' %}
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="text" class="form-control" name="name" required id="" value="{{ request.user.fullname }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Phone No</label>
+                        <input type="text" class="form-control" name="phone" value="{{ request.user.phone }}" required id="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control" name="email" required id="" value="{{ request.user.email }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Facebook Link</label>
+                        <input type="text" class="form-control" name="fac" required id="" value="{{ request.user.facebook }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Twitter Link</label>
+                        <input type="text" class="form-control" name="twi" required id="" value="{{ request.user.twitter }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Instagram Link</label>
+                        <input type="text" class="form-control" name="inst" required id="" value="{{ request.user.instagram }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Description</label>
+                        <textarea name="desc" required id="" cols="30" rows="10" class="form-control">{{ request.user.description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Picture</label>
+                        <input type="file" class="form-control" name="file" id="">
+                    </div>
+                    <div class="form-group mt-3">
+                        <button class="btn btn-success">submit</button>
+                    </div>
+                </form><br><br>
+            </div>
+        </div>
+    </section>
+  </main><!-- End #main -->
+
+{% endblock %}

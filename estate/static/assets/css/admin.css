@@ -1,0 +1,15 @@
+body{
+    background-color: black;
+}
+
+#branding h1{
+    color: white;
+}
+
+.module h2, .module caption, .inline-group h2, #header{
+    background: green;
+}
+
+#content-related{
+    border: 5px solid green;
+}

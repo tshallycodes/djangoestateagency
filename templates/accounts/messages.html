@@ -1,0 +1,50 @@
+{% extends 'basetwo.html' %}
+{% block content %}
+
+
+<main id="main">
+    <section class="container" style="margin-top: 10%;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Client Enquiries</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-borderd table-hover">
+                    <tr>
+                        <th>S/N</th>
+                        <th>Property Name</th>
+                        <th>Location</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Comment</th>
+                        <th>Date Sent</th>
+                    </tr>
+
+                    {% if msgs %}
+                    {% for msg in msgs %}
+                    <tr>
+                        <td>{{ msg.id }}</td>
+                        <td>{{ msg.pname }}</td>
+                        <td>{{ msg.plocation }}</td>
+                        <td>{{ msg.name }}</td>
+                        <td>{{ msg.email }}</td>
+                        <td>{{ msg.phone }}</td>
+                        <td>{{ msg.comment }}</td>
+                        <td>{{ msg.msg_date }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td>no messages yet...</td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </section>
+  </main><!-- End #main -->
+
+{% endblock %}
